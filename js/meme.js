@@ -23,6 +23,12 @@ function fileHandler(evt) {
 
   // START read the file for meme
   reader.readAsDataURL(file);
+
+  // reset text input
+  document.getElementById('text-top').value = '';
+  document.getElementById('text-bottom').value = '';
+  topText = '';
+  bottomText = '';
 }
 
 // draw text to meme refer to user input
@@ -45,9 +51,26 @@ function drawMeme(memeImage, memeText, styleOfText) {
   // get canvas area
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
+
   // change canvas size according to memeImage
-  canvas.width = memeImage.width;
-  canvas.height = memeImage.height;
+  var containerWidth = document.getElementById('meme-container').clientWidth;
+  var containerHeight = document.getElementById('meme-container').clientHeight;
+  console.log(containerWidth);
+  var containerRatio = containerWidth / containerHeight;
+  if (memeImage.width/memeImage.height >= containerRatio && memeImage.width > containerWidth) {
+    canvas.height = Math.round(containerWidth * memeImage.height / memeImage.width);
+    canvas.width = containerWidth;
+  }
+  else if (memeImage.width/memeImage.height < containerRatio && memeImage.height > containerHeight){
+    canvas.width = Math.round(containerHeight * memeImage.width / memeImage.height) ;
+    canvas.height = containerHeight;
+  }
+  else {
+    canvas.width = memeImage.width;
+    canvas.height = memeImage.height;
+  }
+  console.log((containerHeight - canvas.height) / 2 + "px");
+  canvas.style.transform = 'translateY(' + ((containerHeight - canvas.height) / 2) +'px)';
 
   // draw img
   ctx.drawImage(memeImage, 0, 0, canvas.width, canvas.height);
@@ -60,12 +83,8 @@ function drawMeme(memeImage, memeText, styleOfText) {
         ctx.font = styleOfText.size[i] + ' ' + styleOfText.fontFamily[i];
         ctx.fillStyle = styleOfText.fillColor[i];
         ctx.strokeStyle = styleOfText.strokeColor[i];
-        if (styleOfText.posY[i] < 0) {
-          styleOfText.posY[i] += canvas.height;
-          console.log(styleOfText.posY[i]);
-        }
-        ctx.fillText(memeText[i], canvas.width/2, styleOfText.posY[i]);
-        ctx.strokeText(memeText[i], canvas.width/2, styleOfText.posY[i]);
+        ctx.fillText(memeText[i], canvas.width/2, styleOfText.posY[i] + canvas.height * (styleOfText.posY[i] < 0));
+        ctx.strokeText(memeText[i], canvas.width/2, styleOfText.posY[i] + canvas.height * (styleOfText.posY[i] < 0));
       }
     }
   }
@@ -81,9 +100,9 @@ var bottomText = '';
 var textStyle = {
   'size': ['32pt', '32pt'],
   'fontFamily': ['Impact', 'Impact'],
-  'fillColor': ['black', 'black'],
   'strokeColor': ['white', 'white'],
-  'posY': [40, -10]
+  'fillColor': ['black', 'black'],
+  'posY': [50, -20]
 };
 
 document.getElementById('file-select').addEventListener('change', fileHandler, false);
