@@ -55,7 +55,6 @@ function drawMeme(memeImage, memeText, styleOfText) {
   // change canvas size according to memeImage
   var containerWidth = document.getElementById('meme-container').clientWidth;
   var containerHeight = document.getElementById('meme-container').clientHeight;
-  console.log(containerWidth);
   var containerRatio = containerWidth / containerHeight;
   if (memeImage.width/memeImage.height >= containerRatio && memeImage.width > containerWidth) {
     canvas.height = Math.round(containerWidth * memeImage.height / memeImage.width);
@@ -69,7 +68,6 @@ function drawMeme(memeImage, memeText, styleOfText) {
     canvas.width = memeImage.width;
     canvas.height = memeImage.height;
   }
-  console.log((containerHeight - canvas.height) / 2 + "px");
   canvas.style.transform = 'translateY(' + ((containerHeight - canvas.height) / 2) +'px)';
 
   // draw img
@@ -85,6 +83,7 @@ function drawMeme(memeImage, memeText, styleOfText) {
         ctx.strokeStyle = styleOfText.strokeColor[i];
         ctx.fillText(memeText[i], canvas.width/2, styleOfText.posY[i] + canvas.height * (styleOfText.posY[i] < 0));
         ctx.strokeText(memeText[i], canvas.width/2, styleOfText.posY[i] + canvas.height * (styleOfText.posY[i] < 0));
+        // console.log(document.querySelector('body').getAttribute("fontSize"));
       }
     }
   }
@@ -98,11 +97,11 @@ function saveMeme() {
 var topText = '';
 var bottomText = '';
 var textStyle = {
-  'size': ['32pt', '32pt'],
+  'size': ['3em', '3em'],
   'fontFamily': ['Impact', 'Impact'],
   'strokeColor': ['white', 'white'],
   'fillColor': ['black', 'black'],
-  'posY': [50, -20]
+  'posY': [50, -15]
 };
 
 document.getElementById('file-select').addEventListener('change', fileHandler, false);

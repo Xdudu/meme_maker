@@ -1,15 +1,19 @@
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
   text-align: center;
 }
 
 h1 {
-  margin: 40px 0;
+  margin: 2.5em 0;
 }
 
 .playground {
   width: 80%;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.05);
 }
@@ -17,9 +21,9 @@ h1 {
 #meme-container {
   width: 480px;
   height: 360px;
-  margin: 30px 0 30px 50px;
-  border: 9px solid #fff;
-  border-radius: 9px;
+  margin: 1.875em auto;
+  border: 0.6em solid #fff;
+  border-radius: 0.6em;
   background-image: url("../img/meme-img.png");
   background-size: cover;
 }
@@ -27,7 +31,7 @@ h1 {
 .add-text {
   text-align: left;
   width: 240px;
-  margin: 30px auto;
+  margin: 1.875em auto;
 }
 
 #file-select {
@@ -35,9 +39,9 @@ h1 {
 }
 
 .text-input {
-  margin-bottom: inherit;
+  margin-bottom: 1.5em;
   width: 100%;
-  height: 30px;
+  height: 2.75em;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   outline: none;
@@ -50,12 +54,12 @@ h1 {
 
 #save-button {
   width: 100%;
-  height: 45px;
-  line-height: 45px;
+  height: 2.875em;
+  line-height: 2.875em;
   background-color: #ef8896;
   border-radius: 6px;
   color: #fff;
-  font-size: 18px;
+  font-size: 1.125em;
 }
 
 #save-button:hover {
