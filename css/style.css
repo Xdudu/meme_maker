@@ -35,11 +35,11 @@ h1 {
 }
 
 #file-select {
-  margin: inherit;
+  margin: 1.75em auto;
 }
 
 .text-input {
-  margin-bottom: 1.5em;
+  margin-bottom: 0.75em;
   width: 100%;
   height: 2.75em;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -52,10 +52,21 @@ h1 {
   box-shadow: inset 0 0 3px #eb8bfc;
 }
 
+.text-size-controller {
+  color: #666;
+  font-size: 0.75em;
+}
+
+.text-size-controller input {
+  margin: 0 0 1.5em 1.5em;
+  width: 50%;
+  vertical-align: sub;
+}
+
 #save-button {
   width: 100%;
-  height: 2.875em;
-  line-height: 2.875em;
+  height: 2.75em;
+  line-height: 2.75em;
   background-color: #ef8896;
   border-radius: 6px;
   color: #fff;

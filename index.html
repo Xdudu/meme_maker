@@ -7,19 +7,24 @@
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-  <!-- <div class="container"> -->
-    <h1>Make your own meme and have some fun~</h1>
-    <div class="playground">
-      <div id="meme-container">
-        <canvas id="canvas"></canvas>
-      </div>
-      <div class="add-text">
-        <input type="file" id="file-select"><br>
-        <input class="text-input" id="text-top" type="text" placeholder="fun text on top~"></textarea><br>
-        <input class="text-input" id="text-bottom" type="text" placeholder="fun text on bottom!"></textarea><br>
-        <div id="save-button">Awesome! Save it!<div>
-      </div>
+  <h1>Make your own meme and have some fun~</h1>
+  <div class="playground">
+    <div id="meme-container">
+      <canvas id="canvas"></canvas>
     </div>
-  <!-- </div> -->
+    <div class="add-text">
+      <input type="file" id="file-select">
+      <input class="text-input" id="text-top" type="text" placeholder="fun text on top~"></input>
+      <label class="text-size-controller">text size:
+        <input id="top-text-size" name="text-size-top" type="range" max="64" min="32" step="16"></input>
+      </label>
+      <input class="text-input" id="text-bottom" type="text" placeholder="fun text on bottom!"></input>
+      <label class="text-size-controller">text size:
+        <input id="bottom-text-size" name="text-size-bottom" type="range" max="64" min="32" step="16"></input>
+      </label>
+      <div id="save-button">Awesome! Save it!<div>
+    </div>
+  </div>
+
   <script src="js/meme.js"></script>
 </body>

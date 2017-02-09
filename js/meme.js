@@ -89,6 +89,19 @@ function drawMeme(memeImage, memeText, styleOfText) {
   }
 }
 
+function changeTextSize() {
+  var textSizeName = this.name;
+  var textSize = this.value;
+  if (textSizeName === 'text-size-top') {
+    textStyle.size[0] = textSize + 'px';
+    textStyle.posY[0] = textSize / 1;
+  } else if (textSizeName === 'text-size-bottom') {
+    textStyle.size[1] = textSize + 'px';
+    textStyle.posY[1] = - textSize / 3;
+  };
+  drawMeme(memeImg, [topText, bottomText], textStyle);
+}
+
 // open new window to save meme
 function saveMeme() {
   window.open(document.getElementById('canvas').toDataURL());
@@ -97,7 +110,7 @@ function saveMeme() {
 var topText = '';
 var bottomText = '';
 var textStyle = {
-  'size': ['3em', '3em'],
+  'size': ['48px', '48px'],
   'fontFamily': ['Impact', 'Impact'],
   'strokeColor': ['white', 'white'],
   'fillColor': ['black', 'black'],
@@ -107,4 +120,6 @@ var textStyle = {
 document.getElementById('file-select').addEventListener('change', fileHandler, false);
 document.getElementById('text-top').addEventListener('input', textHandler, false);
 document.getElementById('text-bottom').addEventListener('input', textHandler, false);
+document.getElementById('top-text-size').addEventListener('change', changeTextSize, false);
+document.getElementById('bottom-text-size').addEventListener('change', changeTextSize, false);
 document.getElementById('save-button').addEventListener('click', saveMeme, false);
